@@ -1,60 +1,28 @@
 // contract test code will go here
-const assert = require('assert');
-const ganache = require('ganache-cli');
-const Web3 = require('web3'); //importing contructor 
+const assert = require("assert");
+const ganache = require("ganache-cli");
+const Web3 = require("web3"); //importing contructor
 const web3 = new Web3(ganache.provider());
-const { interface, bytecode } = require('../compile');
+const { interface, bytecode } = require("../compile");
 
 let accounts;
 let inbox;
 beforeEach(async () => {
-    // get a lit of all accounts
-    accounts = await web3.eth.getAccounts();
-    // use on of those accounts to deploy contract. 
+  // get a lit of all accounts
+  accounts = await web3.eth.getAccounts();
+  // use on of those accounts to deploy contract.
 
-    inbox = await new web3.eth.Contract(JSON.parse(interface))
-        .deploy({ data: bytecode, arguments: ['Hi there!']}) // inbox requires string for arguments
-        .send({ from: accounts[0], gas: '1000000'}); // one million gas, from first accounts
-        //need await because creating the contract takes some ammount of time that is external. 
+  inbox = await new web3.eth.Contract(JSON.parse(interface))
+    .deploy({ data: bytecode, arguments: ["Hi there!"] }) // inbox requires string for arguments
+    .send({ from: accounts[0], gas: "1000000" }); // one million gas, from first accounts
+  //need await because creating the contract takes some ammount of time that is external.
 });
 
-describe('Inbox', () => {
-    it('deploys a contract', () => {
-        console.log(inbox);
-    });
-}); 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+describe("Inbox", () => {
+  it("deploys a contract", () => {
+    console.log(inbox);
+  });
+});
 
 /*
 class Car {
