@@ -1,3 +1,4 @@
+/*
 const assert = require("assert");
 const ganache = require("ganache-cli");
 const Web3 = require("web3"); //importing contructor
@@ -27,3 +28,4 @@ describe("Testing Car functionality", () => {
     assert.equal(car.drive(), "vroom");
   });
 });
+*/
