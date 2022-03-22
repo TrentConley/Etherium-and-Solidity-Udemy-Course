@@ -13,9 +13,17 @@ class Car {
   }
 }
 
-describe("for me to look at", () => {
-  it("testing park", () => {
-    const car = new Car();
+let car;
+beforeEach(() => {
+  car = new Car();
+});
+
+describe("Testing Car functionality", () => {
+  it("car can park", () => {
     assert.equal(car.park(), "stopped");
+  });
+
+  it("can drive", () => {
+    assert.equal(car.drive(), "vroom");
   });
 });
