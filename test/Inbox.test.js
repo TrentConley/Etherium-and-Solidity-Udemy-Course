@@ -34,6 +34,15 @@ describe("Inbox", () => {
     const message = await inbox.methods.message().call();
     assert.equal(message, INITIAL_STRING);
   });
+
+  it("can modify message", async () => {
+    const newMessage = "Bye there!";
+    await inbox.methods
+      .setMessage(newMessage)
+      .call({ from: accounts[1], gas: "1000000" });
+    const contractMessage = await inbox.methods.message().call();
+    assert.equal(newMessage, contractMessage);
+  });
 });
 
 /*
