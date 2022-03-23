@@ -37,7 +37,7 @@ describe("Inbox", () => {
 
   it("can modify message", async () => {
     const newMessage = "Bye there!";
-    await inbox.methods.setMessage(newMessage).send({ from: accounts[1] });
+    await inbox.methods.setMessage(newMessage).send({ from: accounts[0] });
     const contractMessage = await inbox.methods.message().call();
     assert.equal(newMessage, contractMessage);
   });
