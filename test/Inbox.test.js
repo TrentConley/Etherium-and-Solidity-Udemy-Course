@@ -24,7 +24,8 @@ describe("Inbox", () => {
     console.log(accounts);
   });
   it("deploys a contract", () => {
-    // console.log(inbox);
+    // testing to see if inbox has a contract
+    assert.ok(inbox.options.address);
   });
 });
 
