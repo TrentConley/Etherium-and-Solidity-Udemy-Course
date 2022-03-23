@@ -14,18 +14,22 @@ beforeEach(async () => {
 
   // use on of those accounts to deploy contract.
   inbox = await new web3.eth.Contract(JSON.parse(interface))
-    .deploy({ data: bytecode, arguments: ["Hi there!"] }) // inbox requires string for arguments
+    .deploy({
+      data: bytecode,
+      arguments: ["Hi there!"],
+    }) // inbox requires string for arguments
     .send({ from: accounts[0], gas: "1000000" }); // one million gas, from first accounts
   //need await because creating the contract takes some ammount of time that is external.
 });
 
 describe("Inbox", () => {
-  it("has accounts", () => {
-    console.log(accounts);
-  });
   it("deploys a contract", () => {
-    // testing to see if inbox has a contract
+    // testing to see if inbox has an address
     assert.ok(inbox.options.address);
+  });
+
+  it("has a default message", async () => {
+    const message = await inbox.methods.message().call();
   });
 });
 
