@@ -42,7 +42,7 @@ describe("Inbox", () => {
     assert.equal(newMessage, contractMessage);
   });
 });
-
+// TODO: create new MetaMask wallet with new seed phrase so that we can run tests an publicly store those keys.
 /*
 class Car {
     park() {
