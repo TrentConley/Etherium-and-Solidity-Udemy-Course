@@ -8,6 +8,8 @@ const { interface, bytecode, nothing } = require("../compile"); // .. is because
 
 let accounts;
 let inbox;
+const INITIAL_STRING = "Hi there!";
+
 beforeEach(async () => {
   // get a list of all accounts
   accounts = await web3.eth.getAccounts();
@@ -16,7 +18,7 @@ beforeEach(async () => {
   inbox = await new web3.eth.Contract(JSON.parse(interface))
     .deploy({
       data: bytecode,
-      arguments: ["Hi there!"],
+      arguments: [INITIAL_STRING],
     }) // inbox requires string for arguments
     .send({ from: accounts[0], gas: "1000000" }); // one million gas, from first accounts
   //need await because creating the contract takes some ammount of time that is external.
@@ -30,6 +32,7 @@ describe("Inbox", () => {
 
   it("has a default message", async () => {
     const message = await inbox.methods.message().call();
+    assert.equal(message, INITIAL_STRING);
   });
 });
 
