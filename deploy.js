@@ -1,6 +1,6 @@
 const HDWalletProvider = require("@truffle/hdwallet-provider");
 const Web3 = require("web3");
-const { interface, bytecode } = require(",/compile");
+const { interface, bytecode } = require("./compile");
 
 const provider = new HDWalletProvider(
   "cat olive collect control argue soup blur equip cat luxury clump enemy", // this is seed code for my wallet that has no real money in it
